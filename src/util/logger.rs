@@ -1,6 +1,7 @@
 use std::str::FromStr;
 
 use chrono::Local;
+use log::info;
 use tracing_log::LogTracer;
 use tracing_subscriber::prelude::*;
 use tracing_subscriber::{filter::LevelFilter, fmt};

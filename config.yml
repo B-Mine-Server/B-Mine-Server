@@ -1,4 +1,7 @@
-name: 联合公社
-log_level: info
-v4port: 2024
+name: B-Mine-Server
+log_level: debug
+ip: 0.0.0.0
+max_connection: 200
+game_type: Survival
+v4port: 19132
 v6port: 2024

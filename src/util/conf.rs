@@ -5,7 +5,6 @@ use std::{
 
 use serde::{Deserialize, Serialize};
 
-
 #[derive(Clone, Serialize, Deserialize, Debug)]
 pub struct Admin {
     pub email: String,
@@ -17,6 +16,9 @@ pub struct ServerConfig {
     pub name: String,
     // 日志等级
     pub log_level: String,
+    pub ip: String,
+    pub max_connection: u32,
+    pub game_type: String,
     pub v4port: u16,
     pub v6port: u16,
 }
@@ -25,9 +27,12 @@ impl Default for ServerConfig {
     fn default() -> Self {
         let file_path = "config.yml";
         let config = ServerConfig {
-            name: "联合公社".to_string(), // 服务器名称
+            name: "联合公社".to_string(),   // 服务器名称
             log_level: "debug".to_string(), // 日志等级
-            v4port: 2024,
+            ip: "0.0.0.0".to_string(),      // IP
+            max_connection: 200,
+            game_type: "Survival".to_string(), 
+            v4port: 19132,
             v6port: 2024,
         };
         match read_yml(&file_path) {
@@ -58,4 +63,3 @@ pub fn read_yml(file_path: &str) -> Result<ServerConfig, Box<dyn std::error::Err
     let config: ServerConfig = serde_yaml::from_str(&contents)?;
     Ok(config)
 }
-
